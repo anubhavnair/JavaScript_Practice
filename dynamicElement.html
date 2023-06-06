@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <head>
+        <style>
+            /* Styles for the dynamic container */
+            #dynamic-container {
+                margin: 20px;
+            }
+
+            /* Styles for the table */
+            #tableItem {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            #tableItem th,
+            #tableItem td {
+                padding: 10px;
+                text-align: center;
+            }
+
+            #tableItem tr:nth-child(1) {
+                background-color: #310e0e;
+                color: white;
+                
+            }
+
+            #tableItem tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            #tableItem tr:hover {
+                background-color: #4d45bd;
+                color: white;
+                font-weight: bold;
+            }
+
+            /* Styles for the total amount */
+            #total-amount {
+                margin-top: 20px;
+                font-weight: bold;
+                margin-left: 20px;
+            }
+
+            /* Styles for the select and input elements */
+            select,
+            input[type="number"] {
+                padding: 5px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Styles for the Add Item button */
+            button {
+                padding: 10px 20px;
+                background-color: #1e44cc;
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #05980c;
+                box-shadow: 3px 4px 10px 1px rgb(0, 0, 0);
+
+            }
+
+            /* Styles for the delete button */
+            input[type="button"][value="delete"] {
+                padding: 5px 10px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            input[type="button"][value="delete"]:hover {
+                background-color: #d32f2f;
+            }
+        </style>
+
+    </head>
+    <script>
+        var i = 0;
+        var s = 0;
+        var totalPrice;
+
+        function createDynamicElement() {
+            var itemName = document.getElementById('item-name').value;
+            var itemRate = document.getElementById('item-rate').value;
+            var itemQuantity = document.getElementById('item-quantity').value;
+            totalPrice = itemRate * itemQuantity;
+            s++;
+            i += totalPrice;
+
+            var dynamicElement = document.createElement('tr');
+            dynamicElement.innerHTML =
+                '<td>' + s + '</td>' +
+                '<td>' + itemName + '</td>' +
+                '<td>' + itemRate + '</td>' +
+                '<td>' + itemQuantity + '</td>' +
+                '<td colspan="3">' + totalPrice + '</td>' +
+
+                '<td><input type="button" value="delete" onclick="removePurchase(this);"></td>';
+
+            document.getElementById('tableItem').appendChild(dynamicElement);
+            document.getElementById('total-amount').innerHTML = 'Total Amount: ' + i;
+
+        }
+
+        function removePurchase(button) {
+            var row = button.parentNode.parentNode;
+            i -= totalPrice;
+            row.remove();
+
+            // Update the total amount display
+            document.getElementById('total-amount').innerHTML = 'Total Amount: ' + i;
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="dynamic-container">
+
+
+
+        <table id="tableItem" border="1">
+            <tr>
+                <th>Item Name</th>
+                <th>Item Rate</th>
+                <th colspan="6">Quantity</th>
+            </tr>
+
+
+            <tr>
+
+                <td><select name="item-name" id="item-name">
+
+                        <option value="Kaju">Kaju</option>
+                        <option value="Badam">Badam</option>
+                        <option value="Kishmis">Kismis</option>
+                        <option value="Perfume">Perfume</option>
+                        <option value="BodyLoshan">BodyLoshan</option>
+                    </select></td>
+                <td> <input type="number" id="item-rate" placeholder="Item Rate"></td>
+                <td> <input type="number" id="item-quantity" placeholder="Item Quantity"></td>
+                <td colspan="5"> <button onclick="createDynamicElement()">Add Item</button></td>
+
+            </tr>
+            <tr>
+                <th colspan="8">Purchased Details Bill</th>
+            </tr>
+            <tr>
+                <th>sno.</th>
+                <th>Item Name</th>
+                <th>Item Rate</th>
+                <th>Item Quantity</th>
+                <th colspan="3">Total Price</th>
+
+                <th>status</th>
+            </tr>
+        </table>
+    </div>
+    <div id="total-amount">Total Amount: 0</div>
+</body>
+
+</html>

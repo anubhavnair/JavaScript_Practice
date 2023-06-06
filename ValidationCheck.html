@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script>
+        function CheckValid(){
+            vm=document.f1.txtEmail.value;
+            if(vm.indexOf("@")==-1||vm.indexOf("@")!=vm.lasIndexOf("@")){
+                alert("Please enter a valid email address");
+            }
+            else if(document.f1.txtName.value==""){
+                alert("Name cannot be empty");
+                document.f1.txtName.focus();
+            }
+        }
+   </script>
+</head>
+<body>
+    <form action="savedate.php" name="f1">
+        <label for="">Enter Your Name</label>
+        <input type="text" name="txtName" id="txtName">
+        <label for="">Enter Your Email Id</label>
+        <input type="text" name="txtEmail" id="txtEmail">
+        
+        <input type="button" value="SaveDate" onclick="CheckValid();">
+        
+    </form>
+</body>
+</html>

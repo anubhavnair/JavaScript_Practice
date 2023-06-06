@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #first {
+            background-color: antiquewhite;
+            width: 500px;
+            height: 200px;
+            margin: 0px auto;
+        }
+
+        #heading {
+
+            margin: 50%, auto;
+            background-color: coral;
+            text-align: center;
+            margin: 0px;
+
+        }
+
+        #count {
+            margin: 0px auto;
+            background-color: yellow;
+            color: black;
+            margin-top: 10px;
+            text-align: center;
+            width: 50%;
+        }
+
+        input[value="start"]:hover {
+            background-color: green;
+        }
+
+        input[type="button"] {
+            background-color: rgb(15, 129, 186);
+            color: black;
+            width: 80px;
+            height: 40px;
+            margin-top: 20px;
+        }
+
+        input[value="stop"]:hover {
+            background-color: rgb(255, 0, 13);
+        }
+    </style>
+    <script>
+        var min = 0;
+        var sec = 10;
+
+        function begin() {
+            vm = document.getElementById("count");
+            tmout = setInterval(function () { startCt(); }, 1000);
+            document.vm.syle.color = "blue";
+        }
+        function startCt() {
+            if (sec == 0 && min != 0) {
+                sec = 60;
+                min--;
+
+            }
+            else if (sec == 0 && min == 0) {
+                vm.innerHTML = "Game Over !";
+                clearInterval(tmout);
+               
+
+            } else {
+                sec--;
+                vm.innerHTML = min + ":" + sec;
+
+            }
+        }
+        function stopct(){
+            clearInterval(tmout);
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="first">
+
+
+        <h1 id="heading">click on Start button to start</h1>
+        <h1 id="count">CountDown</h1>
+
+        <input type="button" onclick="begin();" value="start">
+
+        <input type="button" onclick="stop();" value="stop">
+
+    </div>
+
+
+</body>
+
+</html>

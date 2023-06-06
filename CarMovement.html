@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+
+      #main{
+        width: 50%;
+        background-color: black;
+        height: 100vh;
+        margin: 0px auto;
+        position: relative;
+      }
+      #carimg{
+        width: 10%;
+        position: relative;
+      }
+    </style>
+    <script>
+        var cnt = 0;
+        var rght = 0;
+        var bottom = 0;
+
+
+
+        function carimgmove(evnt) {
+
+            var x = evnt.keyCode;
+
+       
+
+            document.getElementById("txtbox").focus();
+
+
+            if (x == 37) {
+
+          
+                rght = rght + 5;
+             
+                document.getElementById("carimg").style.right = rght + "px";
+            }
+
+            else if (x == 38) {
+
+                // cnt++;
+                bottom = bottom + 5;
+                // document.getElementById("secondDiv").innerHTML = cnt;
+                document.getElementById("carimg").style.bottom = bottom + "px";
+            }
+            else if (x == 39) {
+
+                rght = rght - 5;
+
+                document.getElementById("carimg").style.right = rght + "px";
+
+
+            }
+            else if (x == 40) {
+
+                bottom = bottom - 5;
+
+                document.getElementById("carimg").style.bottom = bottom + "px";
+
+
+            } else {
+                evnt.preventDefault();
+            }
+
+
+
+
+        }
+
+
+        function cordinate(evnt){
+
+            var x= evnt.clientX;
+            var y= evnt.clientY;
+
+            document.getElementById("secondDiv").innerHTML=x+","+y;
+        }
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+
+
+    <div id="secondDiv">
+
+    </div>
+
+    <div id="main" onclick="cordinate(event);">
+
+
+        <img src="Aston-Martin_ONE77_02.png" alt="" id="carimg">
+
+        </div>
+  
+    <input type="text" id="txtbox" onkeydown="carimgmove(event);" >
+</body>
+
+</html>

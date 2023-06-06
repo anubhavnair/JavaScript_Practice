@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .firstDiv,
+        .secondDiv {
+            width: 12.5rem;
+            height: 12.5em;
+            border: 2px solid black;
+            position: absolute;
+
+
+        }
+
+        .secondDiv {
+            left: 18.75rem;
+            text-align: center;
+            margin: 50%, auto;
+            vertical-align: middle;
+            background-color: gray;
+            color: white;
+
+        }
+    </style>
+    <script>
+        var c = 0;
+        function increment() {
+            c++;
+          dv=  document.getElementsByClassName("firstDiv");
+          dv[0].innerHTML = c;
+          div=document.getElementById("secondDiv");
+            x=Math.floor(10+Math.random()*(800-10));
+            y=Math.floor(20+Math.random()*(400-20));
+            div.style.left=x+"px";
+            div.style.top=y+"px";
+      
+        }
+        function changePosition(){
+            div=document.getElementById("secondDiv");
+            x=Math.floor(10+Math.random()*(800-10));
+            y=Math.floor(20+Math.random()*(400-20));
+            div.style.left=x+"px";
+            div.style.top=y+"px";
+            z=Math.floor(1+Math.random()*(16581375-1));
+            div.style.background="#"+z;
+        }
+    </script>
+</head>
+
+<div class="firstDiv" id="FirstDiv">
+
+</div>
+<div class="secondDiv" onclick="increment();" id="secondDiv" onmouseenter="changePosition();">
+
+
+    Click-Me
+</div>
+
+<body>
+
+</body>
+
+</html>
